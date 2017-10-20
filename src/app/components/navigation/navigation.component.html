@@ -1,0 +1,11 @@
+<nav>
+  <div>
+    <a class="nav-item" *ngFor="let navItem of navigationItems" routerLink="{{ navItem.route }}" routerLinkActive="active"> {{ navItem.displayName }} </a>
+  </div>
+  <div>
+    <a class="flag" *ngFor="let lang of possibleLanguages" [attr.aria-label]="lang.ariaLable" (click)="changeLanguage(lang.name)"> 
+    <img src="{{lang.flag}}" alt="{{ lang.altText }}"/> 
+    <p>{{ lang.displayName}}</p>
+  </a>
+  </div>
+</nav>

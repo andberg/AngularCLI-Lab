@@ -1,0 +1,27 @@
+nav { 
+    display: flex; 
+    flex-direction: row; 
+    width: 100%; 
+    background-color: rgba(0, 0, 255, 0.34);
+    align-items: baseline;
+    justify-content: space-between;
+
+    .nav-item{
+        margin: 10px;
+    }
+    
+    .flag {
+        margin: 10px;
+        &:hover {
+            text-decoration: underline; 
+        }
+        p {
+            display: inline-block; 
+        }
+
+        img {
+            max-width: 50px; 
+            height: 25px;
+        }
+    }
+}

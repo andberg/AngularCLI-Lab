@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TranslationsService } from '../../services/translations.service';
 
 @Component({
@@ -12,7 +12,10 @@ export class FrontpageComponent implements OnInit {
   ingress: String;  
   paragraph: String;
 
-  constructor(private translationsService:TranslationsService) { }
+  constructor(private translationsService:TranslationsService) {
+    this.translationsService.changedLanguage.subscribe(
+      ()=>{ this.setLaguage() });
+   }
 
   ngOnInit() {
     this.setLaguage();

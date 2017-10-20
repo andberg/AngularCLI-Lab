@@ -1,14 +1,19 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs/Subject'; 
+import { Observable } from 'rxjs/Observable'; 
 
 @Injectable()
 export class TranslationsService {
 
   currentLanguage: String; 
   defaultLanguage: String = "swedish";
-  onLanguageChange: EventEmitter<any> = new EventEmitter();
+  
+  changedLanguage: Observable<any>;
+  languageChange = new Subject<any>();
   
   constructor() { 
-    this.currentLanguage = this.defaultLanguage; 
+    this.currentLanguage = this.defaultLanguage;
+    this.changedLanguage = this.languageChange.asObservable();  
   }
 
   getCurrentLanguare(){
@@ -17,6 +22,7 @@ export class TranslationsService {
 
   setCurrentLanguare(newLanguage:String){
     this.currentLanguage = newLanguage; 
+    this.languageChange.next(newLanguage); 
   }
 
   getTexts(): JSON {
